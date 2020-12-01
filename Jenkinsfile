@@ -17,7 +17,7 @@ pipeline {
         stage('Checkout_first') {
             steps {
                 checkout([   $class: 'GitSCM',
-         branches: [[name: $BRANCH]],
+         branches: [[name: env.BRANCH]],
          doGenerateSubmoduleConfigurations: false,
          extensions: [[$class: 'CleanBeforeCheckout'],
                       [$class: 'SubmoduleOption',
@@ -29,7 +29,7 @@ pipeline {
                       [$class: 'RelativeTargetDirectory',
                        relativeTargetDir: 'skillbox/']],
          submoduleCfg: [],
-         userRemoteConfigs: [[credentialsId: github_access_token, url: $REPO1]]
+         userRemoteConfigs: [[credentialsId: github_access_token, url: env.REPO1]]
        ])
             }
         }
@@ -37,7 +37,7 @@ pipeline {
         stage('Checkout_second') {
             steps {
                 checkout([   $class: 'GitSCM',
-         branches: [[name: $BRANCH]],
+         branches: [[name: env.BRANCH]],
          doGenerateSubmoduleConfigurations: false,
          extensions: [[$class: 'CleanBeforeCheckout'],
                       [$class: 'SubmoduleOption',
@@ -49,7 +49,7 @@ pipeline {
                       [$class: 'RelativeTargetDirectory',
                        relativeTargetDir: 'zabbix/']],
          submoduleCfg: [],
-         userRemoteConfigs: [[credentialsId: github_access_token, url: $REPO2]]
+         userRemoteConfigs: [[credentialsId: github_access_token, url: env.REPO2]]
        ])
             }
         }
@@ -57,7 +57,7 @@ pipeline {
         stage('Checkout_third') {
             steps {
                 checkout([   $class: 'GitSCM',
-         branches: [[name: $BRANCH]],
+         branches: [[name: env.BRANCH]],
          doGenerateSubmoduleConfigurations: false,
          extensions: [[$class: 'CleanBeforeCheckout'],
                       [$class: 'SubmoduleOption',
@@ -69,7 +69,7 @@ pipeline {
                       [$class: 'RelativeTargetDirectory',
                        relativeTargetDir: 'tdm/']],
          submoduleCfg: [],
-         userRemoteConfigs: [[credentialsId: github_access_token, url: $REPO3]]
+         userRemoteConfigs: [[credentialsId: github_access_token, url: env.REPO3]]
        ])
             }
         }
