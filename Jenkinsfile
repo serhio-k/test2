@@ -6,9 +6,9 @@ pipeline {
         REPO1='https://github.com/serhio-k/sklbx.git'
         REPO2='https://github.com/serhio-k/zabbix.git'
         REPO3='https://github.com/serhio-k/TDM.git'
-        BUILD_SCRIPTS1='skillbox'
-        BUILD_SCRIPTS2='zabbix'
-        BUILD_SCRIPTS3='tdm'
+        F1='skillbox'
+        F2='zabbix'
+        F3='tdm'
         BUILD_HOME='/var/lib/jenkins/workspace'
         }
 
@@ -17,13 +17,13 @@ pipeline {
         stage('Checkout_first') {
             steps {
                 checkout([
-        $class: 'GitSCM', 
-        branches: [[name: '*/dev']], 
-        doGenerateSubmoduleConfigurations: false, 
+        $class: 'GitSCM',
+        branches: [[name: '*/dev']],
+        doGenerateSubmoduleConfigurations: false,
         extensions: [[$class: 'CleanCheckout'],
                      [$class: 'RelativeTargetDirectory',
-                       relativeTargetDir: 'sklbx/']], 
-        submoduleCfg: [], 
+                       relativeTargetDir: 'sklbx/']],
+        submoduleCfg: [],
         userRemoteConfigs: [[credentialsId: 'github_access_token', url: env.REPO1]]
     ])
             }
@@ -70,7 +70,18 @@ pipeline {
         }
         stage('Check') {
             steps {
+                echo "Mail folder"
                 sh "ls -laih"
+                echo "-----------------------------"
+                echo "$F1 folder"
+                sh "ls -laih $F1"
+                echo "-----------------------------"
+                echo "$F2 folder"
+                sh "ls -laih $F2"
+                echo "-----------------------------"
+                echo "$F3 folder"
+                sh "ls -laih $F3"
+                echo "-----------------------------"
             }
         }
     }
