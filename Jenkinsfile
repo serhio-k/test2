@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
 
     environment {
         BRANCH='dev'
@@ -42,7 +42,7 @@ pipeline {
                       [$class: 'RelativeTargetDirectory',
                        relativeTargetDir: 'zabbix/']],
          submoduleCfg: [],
-         userRemoteConfigs: [[credentialsId: github_access_token, url: env.REPO2]]
+         userRemoteConfigs: [[credentialsId: 'github_access_token', url: env.REPO2]]
        ])
             }
         }
