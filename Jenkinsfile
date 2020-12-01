@@ -22,7 +22,7 @@ pipeline {
         doGenerateSubmoduleConfigurations: false, 
         extensions: [[$class: 'CleanCheckout'],
                      [$class: 'RelativeTargetDirectory',
-                       relativeTargetDir: 'zabbix/']], 
+                       relativeTargetDir: 'sklbx/']], 
         submoduleCfg: [], 
         userRemoteConfigs: [[credentialsId: 'github_access_token', url: env.REPO1]]
     ])
@@ -64,7 +64,7 @@ pipeline {
                       [$class: 'RelativeTargetDirectory',
                        relativeTargetDir: 'tdm/']],
          submoduleCfg: [],
-         userRemoteConfigs: [[credentialsId: github_access_token, url: env.REPO3]]
+         userRemoteConfigs: [[credentialsId: 'github_access_token', url: env.REPO3]]
        ])
             }
         }
