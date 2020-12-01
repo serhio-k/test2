@@ -1,6 +1,6 @@
 pipeline {
-    agent none
-
+    agent any
+    
     environment {
         BRANCH='dev'
         REPO1='https://github.com/serhio-k/sklbx.git'
