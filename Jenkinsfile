@@ -6,7 +6,7 @@ pipeline {
         REPO1='https://github.com/serhio-k/sklbx.git'
         REPO2='https://github.com/serhio-k/zabbix.git'
         REPO3='https://github.com/serhio-k/TDM.git'
-        F1='skillbox'
+        F1='sklbx'
         F2='zabbix'
         F3='tdm'
         BUILD_HOME='/var/lib/jenkins/workspace'
