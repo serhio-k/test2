@@ -16,21 +16,14 @@ pipeline {
 
         stage('Checkout_first') {
             steps {
-                checkout([   $class: 'GitSCM',
-         branches: [[name: env.BRANCH]],
-         doGenerateSubmoduleConfigurations: false,
-         extensions: [[$class: 'CleanBeforeCheckout'],
-                      [$class: 'SubmoduleOption',
-                       disableSubmodules: false,
-                       parentCredentials: true,
-                       recursiveSubmodules: true,
-                       reference: '',
-                       trackingSubmodules: false],
-                      [$class: 'RelativeTargetDirectory',
-                       relativeTargetDir: 'skillbox/']],
-         submoduleCfg: [],
-         userRemoteConfigs: [[credentialsId: github_access_token, url: env.REPO1]]
-       ])
+                checkout([
+        $class: 'GitSCM', 
+        branches: [[name: '*/master']], 
+        doGenerateSubmoduleConfigurations: false, 
+        extensions: [[$class: 'CleanCheckout']], 
+        submoduleCfg: [], 
+        userRemoteConfigs: [[credentialsId: 'github_access_token', url: env.REPO1]]
+    ])
             }
         }
 
