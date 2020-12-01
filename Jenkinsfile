@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     environment {
         BRANCH='dev'
         REPO1='https://github.com/serhio-k/sklbx.git'
@@ -20,7 +20,9 @@ pipeline {
         $class: 'GitSCM', 
         branches: [[name: '*/dev']], 
         doGenerateSubmoduleConfigurations: false, 
-        extensions: [[$class: 'CleanCheckout']], 
+        extensions: [[$class: 'CleanCheckout'],
+                     [$class: 'RelativeTargetDirectory',
+                       relativeTargetDir: 'zabbix/']], 
         submoduleCfg: [], 
         userRemoteConfigs: [[credentialsId: 'github_access_token', url: env.REPO1]]
     ])
