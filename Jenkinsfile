@@ -11,7 +11,9 @@ pipeline {
         F3='tdm'
         BUILD_HOME='/var/lib/jenkins/workspace'
         }
-
+    options {
+        ansiColor('xterm')
+    }
     stages {
 
         stage('Checkout_first') {
